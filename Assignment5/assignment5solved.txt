@@ -1,0 +1,72 @@
+
+___________________________________________________HR
+
+1.>	SELECT * FROM employees WHERE first_name LIKE 's%' or last_name LIKE 's%';
+2.>	SELECT CONCAT(UPPER(SUBSTRING(First_Name,1,1)),LOWER(SUBSTRING(First_Name,2))) AS First_Name_,LOWER(Last_Name) FROM employees;
+3.>	SELECT SUBSTRING_INDEX(job_title,' ', 1) FROM jobs;
+4.>	SELECT length(first_name) From employees WHERE last_name LIKE '___b%';
+5.>	SELECT UPPER(first_name),LOWER(email) FROM employees WHERE strcmp(first_name,last_name)=0;
+6.>	SELECT first_name,round(salary,3) FROM employees;
+7.>	SELECT manager_id,count(employee_id) FROM employees GROUP BY manager_id;
+8.>	SELECT employee_id,end_date FROM job_history;
+9.>	SELECT Country_id,count(city) FROM locations GROUP BY country_id; 
+10.>	SELECT AVG(salary),department_id FROM employees WHERE commission_pct IS NOT NULL GROUP BY department_id;
+11.>	SELECT job_id,count(employee_id),sum(salary),(max(salary)-min(salary)) AS DIFFERENCE FROM employees GROUP BY job_id;
+12.>	SELECT job_id FROM employees GROUP BY job_id HAVING avg(salary)>10000;
+13.>	SELECT start_date FROM job_history GROUP BY start_date HAVING count(employee_id)>10;
+14.>	SELECT department_id FROM employees WHERE commission_pct IS NOT NULL GROUP BY department_id HAVING COUNT(COMMISSION_PCT)>5;
+15.>	SELECT employee_id FROM job_history GROUP BY employee_id HAVING COUNT(employee_id) > 1;
+16.>	SELECT job_id FROM job_history WHERE end_date-start_date > 100 GROUP BY job_id HAVING COUNT(job_id)>=2;
+17.>	SELECT DEPARTMENT_ID, DATE_FORMAT(HIRE_DATE,'%Y'),COUNT(EMPLOYEE_ID) FROM employees GROUP BY DEPARTMENT_ID,DATE_FORMAT (HIRE_DATE, '%Y') ORDER BY DEPARTMENT_ID;
+18.>	SELECT department_id FROM employees GROUP BY department_id HAVING count(manager_id)>5;
+19.>	SELECT employee_id, last_name, hire_date,  LAST_DAY(hire_date)  FROM employees;
+20.>	SELECT FIRST_NAME, SYSDATE(), HIRE_DATE, round(DATEDIFF( SYSDATE(), hire_date )/365,1) FROM employees;
+21.>	
+22.>
+23.>
+24.>
+25.>
+26.>	SELECT * FROM DEPARTMENTS WHERE department_id IN (SELECT department_id FROM EMPLOYEES GROUP BY department_id HAVING max(salary)>10000);
+27.>
+.
+..
+35.>	SELECT DISTINCT Salary FROM employees ORDER BY salary DESC LIMIT 2,1; 
+36.>	SELECT * FROM employees	WHERE commission_pct IS NULL AND salary BETWEEN 5000 AND 10000 AND department_id =30;
+
+
+
+
+
+_________________________________________________SALES
+1.>	SELECT * FROM ORDERS WHERE odate='1990-10-03' OR odate='1990-10-04';
+2.>	SELECT c.cname  FROM CUSTOMERS c INNER JOIN SALESPEOPLE s ON c.snum=s.snum WHERE s.sname LIKE 'PEEL' OR s.sname LIKE 'Motika'; 
+3.>	SELECT * FROM CUSTOMERS WHERE cname>'A%s' AND cname<'G%s';
+4.>	SELECT * FROM CUSTOMERS WHERE cname LIKE'C%s';
+5.>	SELECT * FROM ORDERS WHERE amt = 0 OR amt IS NULL;
+7.>	SELECT count(city) FROM CUSTOMERS WHERE city IS NOT NULL;
+8.> 	SELECT DISTINCT cnum,min(amt) FROM ORDERS GROUP BY cnum HAVING min(amt); 
+9.>	SELECT cname FROM CUSTOMERS WHERE cname LIKE 'G%' ORDER BY cname LIMIT 1;
+10.>	SELECT DISTINCT city,max(rating) FROM CUSTOMERS GROUP BY city HAVING max(rating); 
+11.>	SELECT DISTINCT count(DISTINCT cnum) FROM ORDERS GROUP BY odate;
+12.>	SELECT onum,snum,amt,amt*0.12 AS COMMISSION FROM ORDERS;
+13.>	SELECT DISTINCT city, max(Rating) FROM CUSTOMERS GROUP BY city;
+14.>	SELECT Rating,cname AS CustomerName,cnum AS CustomerNumber FROM CUSTOMERS ORDER BY rating DESC;
+15.>	SELECT sum(amt) AS amt,odate FROM ORDERS GROUP BY odate ORDER BY amt DESC;
+16.>	SELECT * FROM ORDERS WHERE cnum = ( SELECT cnum FROM CUSTOMERS WHERE cname LIKE 'Cisneros');
+17.>	SELECT cname,rating FROM CUSTOMERS WHERE cnum IN (SELECT DISTINCT cnum FROM ORDERS WHERE amt > (SELECT avg(amt) FROM ORDERS));
+18.>	SELECT DISTINCT snum FROM SALESPEOPLE WHERE snum IN (SELECT snum FROM ORDERS ) ;
+19.>	SELECT cname FROM CUSTOMERS WHERE rating >=ALL (SELECT c.rating FROM CUSTOMERS c INNER JOIN SALESPEOPLE s ON c.snum =s.snum WHERE sname LIKE 'SERRES' );
+20.>	SELECT s.sname,c.cname,s.city,c.city FROM SALESPEOPLE s INNER JOIN CUSTOMERS c ON s.snum = c.snum WHERE s.city != c.city ;
+21.>	SELECT * FROM ORDERS WHERE amt > ANY (SELECT o.amt FROM ORDERS o INNER JOIN CUSTOMERS c ON o.cnum=c.cnum WHERE c.city LIKE 'LONDON' );
+22.>	SELECT * FROM ORDERS WHERE amt > ANY (SELECT o.amt FROM ORDERS o INNER JOIN CUSTOMERS c ON o.cnum=c.cnum HAVING c.city LIKE 'LONDON' );
+
+
+
+
+
+
+
+
+
+ 
+
