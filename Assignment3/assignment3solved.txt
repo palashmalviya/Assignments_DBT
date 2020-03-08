@@ -1,0 +1,7 @@
+1.>	UPDATE EMP SET job='Software Developer' WHERE ename='SMITH';
+2.>	UPDATE EMP SET (sal=sal+sal*0.20), comm=10.05 WHERE empno=7788;
+3.>	UPDATE EMP SET sal=sal+sal*0.10;
+4.>	UPDATE EMP SET comm=100 WHERE comm IS NULL;
+5.>	DELETE FROM EMP WHERE deptno =40;
+6.>	DELETE FROM EMP WHERE hire LIKE '1982-01-23';
+7.>	DELETE FROM EMP WHERE deptno=10;
