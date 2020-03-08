@@ -1,0 +1,96 @@
+######################################
+-----------------HR-------------------
+######################################
+1.> 	SELECT first_name First_Name,last_name Last_Name FROM employees;
+2.> 	SELECT DISTINCT Department_ID FROM employees;
+3.> 	SELECT * FROM employees ORDER BY first_name DESC;
+4.> 	SELECT concat(First_Name ,Last_Name)Name,Salary,salary*0.15 PF FROM employees;
+5.>	SELECT employee_id,concat_ws(' ',First_Name ,Last_Name)Name,Salary  FROM employees Order by Salary ASC;
+6.>	SELECT sum(Salary) FROM employees;
+7.>	SELECT max(salary), min(salary) FROM employees;
+8.>	SELECT 171*214+625 FROM dual;
+9.>	SELECT concat_ws(' ',first_name,last_name) FROM employees;
+10.>	SELECT * FROM employees LIMIT 10;
+11.> 	SELECT first_name,hire_date FROM employees WHERE job_id='IT_PROG' OR job_id='SA_MAN';
+12.>	SELECT * FROM employees WHERE employee_id=150 OR employee_id=160;
+13.>	SELECT First_Name,Salary,Commission_PCT,Hire_Date FROM employees WHERE salary<10000;
+14.>	SELECT * From employees WHERE first_name OR last_name LIKE 'S%';
+15.>	SELECT job_title FROM jobs ORDER BY Job_title DESC;
+16.>	SELECT * FROM employees WHERE commission_pct IS NULL AND salary BETWEEN 5000 AND 10000 AND department_id = 30 ;
+17.>	SELECT e.first_name,e.email FROM employees e INNER JOIN departments d ON e.department_id=d.department_id;
+18.>	SELECT DISTINCT Country_id FROM locations;
+19.>	SELECT * FROM employees WHERE (job_id='IT_PROG') OR (job_id='FI_ACCOUNT');
+20.>	SELECT Country_Name FROM countries ORDER BY country_name ASC;
+
+
+
+######################################
+--------------NORTHWIND---------------
+######################################
+
+1.>	SELECT ProductName,UnitsInStock From Products;
+2.>	SELECT ProductID,ProductName FROM Products;
+3.>	SELECT ProductID,ProductName,UnitPrice FROM Products WHERE UnitPrice<20;
+4.>	SELECT ProductID,ProductName,UnitPrice FROM Products WHERE UnitPrice BETWEEN 15 AND 25;
+5.>	SELECT ProductName, UnitPrice FROM Products WHERE unitprice > (SELECT avg(unitprice) FROM Products);
+6.>	SELECT CategoryName,Description FROM Categories; 
+7.>	SELECT ContactName,CompanyName,ContactTitle,Phone FROM Customers;
+8.>	SELECT EmployeeID,Title,FirstName,LastName,Region FROM Employees;
+9.>	SELECT RegionID,RegionDescription FROM Region;
+10.>	SELECT CompanyName,Fax,Phone,HomePage FROM Suppliers;
+11.>	SELECT CategoryName,Description FROM Categories ORDER BY CategoryName;
+12.>	SELECT ContactName,CompanyName,ContactTitle,Phone FROM Customers ORDER BY Phone;
+13.>	SELECT FirstName,LastName,HireDate FROM Employees Order By HireDate DESC;
+14.>	SELECT OrderID,OrderDate,ShippedDate,CustomerID,Freight FROM Orders ORDER BY Freight DESC;
+15.>	SELECT CompanyName, Fax,Phone,HomePage,country FROM Suppliers ORDER BY Country DESC,CompanyName ASC;
+16.>	SELECT FirstName,LastName FROM Employees ORDER BY Title ASC,LastName DESC;	
+17.>	
+18.>
+19.>	SELECT OrderDate,ShippedDate,CustomerID,Freight FROM Orders WHERE OrderDate LIKE '1997-05-19%';
+20.>	SELECT companyname,contactname,fax FROM Customers WHERE FAX IS NOT NULL;
+21.>	SELECT FirstName,LastName FROM Employees WHERE (ReportsTo IS NULL) OR (ReportsTo=0);
+
+
+
+
+######################################
+-----------------SALES----------------
+######################################
+
+
+1.>
+2.>	SELECT column 4 FROM CUSTOMERS;
+3.>
+4.>
+5.>	SELECT onum,amt,odate FROM ORDERS;
+6.>	SELECT * FROM CUSTOMERS WHERE snum=1001;
+7.>	SELECT City,SName,SNum,Comm FROM SALESPEOPLE;
+8.>	SELECT Rating,CName FROM CUSTOMERS WHERE city='San Jose';
+9.>	SELECT DISTINCT SNum FROM ORDERS;
+10.>	SELECT * FROM ORDERS WHERE amt>1000;
+11.>	SELECT SName,City FROM SALESPEOPLE WHERE City='London' AND comm>0.10;
+12.>	SELECT * FROM CUSTOMERS WHERE (city ='Rome') AND (rating>100); 
+13.>	IT WILL EXCLUDE THE RECORD WHICH ARE NOT_HAVING (ODATE 1990-10-03 AND cnum 2003) Accepts WHOSE amt<1000 ;
+14.>	
+15.>	SELECT * FROM SALESPEOPLE WHERE comm BETWEEN .12 AND .14; 
+16.>	SELECT * FROM ORDERS WHERE (amt!=0) OR (amt IS NOT NULL);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16.>	
