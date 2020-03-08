@@ -1,0 +1,31 @@
+1.>	SELECT d.department_name,e.first_name FROM departments d INNER JOIN employees e ON d.manager_id=e.employee_id;
+2.>	SELECT d.department_name,e.first_name,l.city FROM departments d INNER JOIN employees e ON d.manager_id=e.employee_id INNER JOIN locations l ON d.location_id=l.location_id;
+3.>	SELECT d.department_name,l.city,c.country_name FROM departments d INNER JOIN locations l ON d.location_id =l.location_id INNER JOIN countries c ON l.country_id=c.country_id;
+4.>	SELECT d.department_name,e.last_name FROM departments d INNER JOIN employees e ON d.manager_id=e.employee_id INNER JOIN jobs j ON e.job_id=j.job_id INNER JOIN job_history jh ON e.employee_id=jh.employee_id WHERE start_date BETWEEN '2000-01-01' AND '2005-12-31';
+5.>	SELECT j.job_title,avg(e.salary) FROM employees e INNER JOIN jobs j ON e.job_id=j.job_id GROUP BY j.job_title;
+6.>	SELECT j.job_title,e.first_name,j.max_salary-e.salary 'DIFF Salary' FROM jobs j INNER JOIN employees e ON j.job_id=e.job_id;
+7.>	SELECT e.last_name,j.job_title FROM jobs j INNER JOIN employees e ON j.job_id=e.job_id WHERE e.commission_pct IS NOT NULL AND e.department_id=30 ;
+8.>	SELECT j.job_title FROM jobs j LEFT JOIN employees e ON j.job_id=e.job_id WHERE e.salary>15000;
+9.>	SELECT d.department_name,e.first_name,e.salary FROM departments d INNER JOIN employees e ON e.department_id=d.manager_id WHERE DATEDIFF(SYSDATE(),e.hire_date)>5;
+10.>	SELECT e.first_name,e.employee_id FROM employees e JOIN employees e1 ON e.manager_id=e1.employee_id WHERE e.hire_date>e1.hire_date;
+11.>	SELECT e.first_name,j.job_title FROM employees e INNER JOIN jobs j ON j.job_id=e.job_id INNER JOIN job_history jh ON j.job_id=jh.job_id WHERE (end_date-start_date)<6;
+12.>	SELECT e.first_name,c.country_name FROM employees e INNER JOIN departments d ON e.department_id = d.department_id INNER JOIN locations l ON d.location_id = l.location_id INNER JOIN countries c ON l.country_id =c.country_id;
+13.>	SELECT d.department_name,avg(e.salary),count(e.employee_id),sum(e.commission_pct) FROM departments d INNER JOIN employees e ON d.department_id = e.department_id GROUP BY d.department_name;  
+14.>	SELECT 
+15.>	SELECT distinct d.department_id,d.department_name,d.manager_id,d.location_id FROM departments d INNER JOIN employees e ON d.department_id=e.department_id WHERE e.salary > (select avg(salary) FROM employees ) ; 
+16.>	SELECT e.first_name,j.job_title,jh.start_date,jh.end_date FROM employees e INNER JOIN jobs j ON e.job_id=j.job_id INNER JOIN job_history jh ON e.employee_id = jh.employee_id;
+
+________________________________________________________________SALES___________________________________________________
+1.>	SELECT o.onum,c.cname FROM ORDERS o INNER JOIN CUSTOMERS c ON c.cnum=o.cnum;
+2.>	SELECT s.sname,c.cname,o.onum FROM CUSTOMERS c INNER JOIN ORDERS o ON c.cnum=o.cnum INNER JOIN SALESPEOPLE s ON o.snum=s.snum; 
+3.>	SELECT c.cname FROM CUSTOMERS c INNER JOIN SALESPEOPLE s ON c.snum=s.snum WHERE s.comm>0.12;
+4.>	SELECT s.comm*o.amt AMT_SALESPEOPLE FROM SALESPEOPLE s INNER JOIN ORDERS o ON s.snum=o.snum;
+5.>	SELECT s.sname,s1.sname, s.city,s1.city FROM SALESPEOPLE s INNER JOIN SALESPEOPLE s1 ON s.city=s1.city WHERE s.snum>s1.snum  ;
+6.>	SELECT c.cname,c.city FROM CUSTOMERS c INNER JOIN CUSTOMERS c1 ON c.cnum=c1.cnum WHERE c.rating =( SELECT rating FROM CUSTOMERS WHERE cname LIKE 'HOFFMAN');
+
+
+
+
+
+
+
