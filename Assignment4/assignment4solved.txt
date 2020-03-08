@@ -1,0 +1,13 @@
+0.>	CREATE USER 'sunbeam'@'localhost';
+1.>	GRANT UPDATE ON classwork.BOOKS TO 'sunbeam'@'localhost';
+2.>	GRANT DELETE ON classwork.BOOKS TO 'sunbeam'@'localhost';
+	GRANT DELETE ON classwork.EMP TO 'sunbeam'@'localhost';
+	GRANT DELETE ON classwork.DEPT TO 'sunbeam'@'localhost';
+3.>	GRANT INSERT ON classwork.EMP TO 'sunbeam'@'localhost';
+4.>	GRANT DELETE ON classwork.DEPT TO 'sunbeam'@'localhost';
+5.>	REVOKE UPDATE ON classwork.BOOKS FROM 'sunbeam'@'localhost';
+6.>	REVOKE INSERT ON classwork.EMP FROM 'sunbeam'@'localhost';
+7.>	REVOKE DELETE ON classwork.DEPT FROM 'sunbeam'@'localhost';
+8.>	REVOKE SELECT ON classwork.BOOKS FROM 'sunbeam'@'localhost';
+	REVOKE SELECT ON classwork.EMP FROM 'sunbeam'@'localhost';
+	REVOKE SELECT ON classwork.DEPT FROM 'sunbeam'@'localhost';
