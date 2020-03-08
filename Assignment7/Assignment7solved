@@ -1,0 +1,43 @@
+1.>	CREATE INDEX date ON ORDERS (odate);
+2.>	CREATE UNIQUE INDEX Order_NUM ON ORDERS (onum);  ---ALTER TABLE ORDERS ADD CONSTRAINT UQ_ONUM UNIQUE(onum);
+3.>	
+4.>	
+
+______________________________
+1.>	CREATE VIEW s1 AS (SELECT * FROM CUSTOMERS WHERE rating = (SELECT max(rating) FROM CUSTOMERS));
+2.>	CREATE VIEW s2 AS (SELECT count(snum),city FROM SALESPEOPLE GROUP BY city );
+3.>	CREATE VIEW s3 AS (SELECT DISTINCT s.sname,avg(o.amt), sum(o.amt),count(s.snum) FROM SALESPEOPLE s INNER JOIN ORDERS o ON o.snum=o.snum  WHERE s.snum=o.snum GROUP BY s.sname) ;
+4.>	CREATE VIEW s4 AS (SELECT c.cnum,c.cname,s.snum,s.sname FROM SALESPEOPLE s INNER JOIN CUSTOMERS c ON s.snum=o.snum); ---CREATE VIEW s4 AS (SELECT cnum,cname,snum,sname FROM SALESPEOPLE,CUSTOMERS);
+5.>	CREATE VIEW commission AS( SELECT snum,comm FROM SALESPEOPLE WHERE comm BETWEEN .10 AND .20 )WITH CHECK OPTION ;
+6.>	CREATE VIEW s6 AS(SELECT * FROM CUSTOMERS WHERE RATING BETWEEN 100 and 500 )WITH CHECK OPTION;
+7.>	CREATE VIEW s7 AS (  SELECT * FROM CUSTOMERS WHERE rating> (SELECT min(rating) FROM CUSTOMERS));
+
+________________________________________________classwork____________________________________________________________
+
+1.>	RENAME TABLE EMP TO EMPLOYEE;
+2.>	ALTER TABLE DEPT ADD COLUMN region varchar(20);
+3.>	ALTER TABLE DUMMY ADD COLUMN dummy_ID INT FIRST;
+4.>	ALTER TABLE SALGRADE ADD COLUMN position INT AFTER grade;
+5.>	ALTER TABLE EMPLOYEE MODIFY sal FLOAT;
+6.>	ALTER TABLE DEPT DROP region;
+7.>	ALTER TABLE EMPLOYEE RENAME COLUMN job TO job_designation;
+
+__________________________________SALES_____________________________________
+
+8.>	ALTER TABLE SALESPEOPLE MODIFY snum INT PRIMARY KEY;
+9.>	ALTER TABLE CUSTOMERS MODIFY cnum INT PRIMARY KEY;
+10.>	ALTER TABLE CUSTOMERS ADD CONSTRAINT FK_NUM FOREIGN KEY (snum) REFERENCES SALESPEOPLE(snum);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
